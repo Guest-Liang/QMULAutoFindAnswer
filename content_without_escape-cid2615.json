@@ -1,0 +1,609 @@
+{        
+    "jsonContentData":{
+        "interactiveVideo": {
+            "video": {
+                "startScreenOptions": {
+                    "title": "EBU5303 Digitisation Interactive Video (Part 1)",
+                    "hideStartTitle": false
+                },
+                "textTracks": {
+                    "videoTrack": [{
+                        "label": "Subtitles",
+                        "kind": "subtitles",
+                        "srcLang": "en"
+                    }]
+                },
+                "files": [{
+                    "path": "videos\\/files-5e6981654640d.mp4",
+                    "mime": "video\\/mp4",
+                    "copyright": {
+                        "license": "U",
+                        "title": "Digitisation Part 1",
+                        "author": "Marie-Luce Bourguet",
+                        "year": "2020"
+                    }
+                }]
+            },
+            "assets": {
+                "interactions": [{
+                    "x": 1.6198712850276917,
+                    "y": 5.7625409710805959,
+                    "width": 35.5625,
+                    "height": 20,
+                    "duration": {
+                        "from": 135,
+                        "to": 135
+                    },
+                    "libraryTitle": "Drag and Drop",
+                    "action": {
+                        "library": "H5P.DragQuestion 1.14",
+                        "params": {
+                            "scoreShow": "Check",
+                            "tryAgain": "Retry",
+                            "scoreExplanation": "Correct answers give +1 point. Incorrect answers give -1 point. The lowest possible score is 0.",
+                            "question": {
+                                "settings": {
+                                    "size": {
+                                        "width": 620,
+                                        "height": 310
+                                    }
+                                },
+                                "task": {
+                                    "elements": [{
+                                        "x": 1.2121212121212122,
+                                        "y": 2.0242914979757085,
+                                        "width": 5,
+                                        "height": 3.3272727272727272,
+                                        "dropZones": ["0", "1"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e6984178ba79.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 275,
+                                                    "height": 183
+                                                },
+                                                "alt": "camera"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "866d2b9c-32a8-4560-8d17-5f88f99aa518"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 16.565656565656564,
+                                        "y": 1.214574898785425,
+                                        "width": 3.8980010606060604,
+                                        "height": 3.8980010606060604,
+                                        "dropZones": ["1", "0"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e69844440460.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 225,
+                                                    "height": 225
+                                                },
+                                                "alt": "disc"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "a31f3581-3944-4a3b-aae4-5d3895051b5c"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 29.292929292929291,
+                                        "y": 3.6437246963562751,
+                                        "width": 5,
+                                        "height": 2.8355704697986579,
+                                        "dropZones": ["0", "1"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e69847950f65.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 298,
+                                                    "height": 169
+                                                },
+                                                "alt": "signal"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "7b4372c4-8f70-4c4b-94b3-c80e7caa3eaf"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 44.848484848484844,
+                                        "y": 2.42914979757085,
+                                        "width": 5,
+                                        "height": 3.3272727272727272,
+                                        "dropZones": ["1", "0"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e6984a4a3ad4.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 275,
+                                                    "height": 183
+                                                },
+                                                "alt": "multimeter"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "257a9324-3e0e-43c5-8d04-33ddc9304bc3"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 60.404040404040401,
+                                        "y": 0,
+                                        "width": 3.8980010606060604,
+                                        "height": 4.6808293434343433,
+                                        "dropZones": ["0", "1"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e6984e9ad263.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 197,
+                                                    "height": 256
+                                                },
+                                                "alt": "watch"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "1c0f795c-187d-47d5-bc2b-c06bf1037ccd"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 73.333333333333329,
+                                        "y": 0,
+                                        "width": 3.8980010606060604,
+                                        "height": 4.6808293434343433,
+                                        "dropZones": ["0", "1"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e69851239646.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 225,
+                                                    "height": 225
+                                                },
+                                                "alt": "multimeter"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "01c6a687-9ba1-49cc-8761-940424c894b1"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 86.060606060606062,
+                                        "y": 0,
+                                        "width": 3.8980010606060604,
+                                        "height": 4.6808293434343433,
+                                        "dropZones": ["0", "1"],
+                                        "type": {
+                                            "library": "H5P.Image 1.1",
+                                            "params": {
+                                                "contentName": "Image",
+                                                "file": {
+                                                    "path": "images\\/file-5e69854d415dd.jpg",
+                                                    "mime": "image\\/jpeg",
+                                                    "copyright": {
+                                                        "license": "U"
+                                                    },
+                                                    "width": 216,
+                                                    "height": 233
+                                                },
+                                                "alt": "disc"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Image",
+                                                "license": "U",
+                                                "title": "Untitled Image"
+                                            },
+                                            "subContentId": "b7705579-a8f7-45a1-a8f9-157307066487"
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }],
+                                    "dropZones": [{
+                                        "x": 2.0202020202020203,
+                                        "y": 36.43724696356275,
+                                        "width": 18.005050505050505,
+                                        "height": 11.742424242424242,
+                                        "correctElements": ["0", "2", "4", "6", "5"],
+                                        "showLabel": true,
+                                        "backgroundOpacity": 100,
+                                        "tipsAndFeedback": {
+                                            "tip": ""
+                                        },
+                                        "single": false,
+                                        "autoAlign": true,
+                                        "label": "<div>Analogue<\\/div>\n"
+                                    }, {
+                                        "x": 50.505050505050505,
+                                        "y": 36.43724696356275,
+                                        "width": 18.005050505050505,
+                                        "height": 11.742424242424242,
+                                        "correctElements": ["1", "3"],
+                                        "showLabel": true,
+                                        "backgroundOpacity": 100,
+                                        "tipsAndFeedback": {
+                                            "tip": ""
+                                        },
+                                        "single": false,
+                                        "autoAlign": true,
+                                        "label": "<div>Digital<\\/div>\n"
+                                    }]
+                                }
+                            },
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableCheckButton": true,
+                                "singlePoint": false,
+                                "applyPenalties": false,
+                                "enableScoreExplanation": false,
+                                "dropZoneHighlighting": "never",
+                                "autoAlignSpacing": 2,
+                                "enableFullScreen": false,
+                                "showScorePoints": false,
+                                "showTitle": true
+                            },
+                            "grabbablePrefix": "Grabbable {num} of {total}.",
+                            "grabbableSuffix": "Placed in dropzone {num}.",
+                            "dropzonePrefix": "Dropzone {num} of {total}.",
+                            "noDropzone": "No dropzone.",
+                            "tipLabel": "Show tip.",
+                            "tipAvailable": "Tip available",
+                            "correctAnswer": "Correct answer",
+                            "wrongAnswer": "Wrong answer",
+                            "feedbackHeader": "Feedback",
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "scoreExplanationButtonLabel": "Show score explanation",
+                            "localize": {
+                                "fullscreen": "Fullscreen",
+                                "exitFullscreen": "Exit fullscreen"
+                            },
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "submit": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Drag and Drop",
+                            "license": "U",
+                            "title": "Analogue versus Digital : drag and drop each image in its category"
+                        },
+                        "subContentId": "38893a48-c3ae-4bfa-9096-9b3e6dd468bb"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 1.6198712850276917,
+                    "y": 17.290623848202554,
+                    "width": 35.5625,
+                    "height": 15,
+                    "duration": {
+                        "from": 260,
+                        "to": 260
+                    },
+                    "libraryTitle": "Single Choice Set",
+                    "action": {
+                        "library": "H5P.SingleChoiceSet 1.11",
+                        "params": {
+                            "choices": [{
+                                "subContentId": "1c023e44-3fdd-4da9-b32a-202c3cff1a04",
+                                "question": "<p>What is the sine function representing a sound wave with a frequency of 440 Hz? (p stands for \"pi\")<\\/p>\n",
+                                "answers": ["<p>s(t) = sin (880pt)&nbsp;<\\/p>\n", "<p style=\"text-align:left\">s(t) = sin (440pt)<\\/p>\n", "<p>s(t) = sin (880t)<\\/p>\n", "<p>s(t) = sin (440p)<\\/p>\n"]
+                            }],
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "behaviour": {
+                                "autoContinue": false,
+                                "timeoutCorrect": 2000,
+                                "timeoutWrong": 3000,
+                                "soundEffectsEnabled": false,
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "passPercentage": 100
+                            },
+                            "l10n": {
+                                "nextButtonLabel": "Next question",
+                                "showSolutionButtonLabel": "Show solution",
+                                "retryButtonLabel": "Retry",
+                                "solutionViewTitle": "Solution list",
+                                "correctText": "Correct!",
+                                "incorrectText": "Incorrect!",
+                                "muteButtonLabel": "Mute feedback sound",
+                                "closeButtonLabel": "Close",
+                                "slideOfTotal": "Slide :num of :total",
+                                "scoreBarLabel": "You got :num out of :total points",
+                                "solutionListQuestionNumber": "Question :num",
+                                "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                                "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                                "shouldSelect": "Should have been selected",
+                                "shouldNotSelect": "Should not have been selected"
+                            }
+                        },
+                        "metadata": {
+                            "contentType": "Single Choice Set",
+                            "license": "U",
+                            "title": "Sinusoidal functions Single Choice Set"
+                        },
+                        "subContentId": "f769a553-3df5-4f93-9e39-e8ff780e8f1b"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 1.6207455429497568,
+                    "y": 20.172910662824208,
+                    "width": 36.25,
+                    "height": 15,
+                    "duration": {
+                        "from": 425,
+                        "to": 425
+                    },
+                    "libraryTitle": "Fill in the Blanks",
+                    "action": {
+                        "library": "H5P.Blanks 1.14",
+                        "params": {
+                            "text": "Fill in the missing words",
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "showSolutions": "Show solution",
+                            "tryAgain": "Retry",
+                            "checkAnswer": "Check",
+                            "notFilledOut": "Please fill in all blanks to view solution",
+                            "answerIsCorrect": "&#039;:ans&#039; is correct",
+                            "answerIsWrong": "&#039;:ans&#039; is wrong",
+                            "answeredCorrectly": "Answered correctly",
+                            "answeredIncorrectly": "Answered incorrectly",
+                            "solutionLabel": "Correct answer:",
+                            "inputLabel": "Blank input @num of @total",
+                            "inputHasTipLabel": "Tip available",
+                            "tipLabel": "Tip",
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "enableCheckButton": true,
+                                "autoCheck": false,
+                                "caseSensitive": false,
+                                "showSolutionsRequiresInput": true,
+                                "separateLines": false,
+                                "confirmCheckDialog": false,
+                                "confirmRetryDialog": false,
+                                "acceptSpellingErrors": true
+                            },
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "confirmCheck": {
+                                "header": "Finish ?",
+                                "body": "Are you sure you wish to finish ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Finish"
+                            },
+                            "confirmRetry": {
+                                "header": "Retry ?",
+                                "body": "Are you sure you wish to retry ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Confirm"
+                            },
+                            "questions": ["<p>A sound represented by a completely regular sine wave is called a *pure tone*. The frequency of a wave informs us about the *pitch* of the sound it represents. The amplitude of a wave informs us about the *loudness* of the sound it represents. The wavelength of a light ray contains information about its *colour\\/colours*.<\\/p>\n"],
+                            "media": {
+                                "disableImageZooming": false
+                            },
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "a11yCheckingModeHeader": "Checking mode",
+                            "submitAnswer": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Fill in the Blanks",
+                            "license": "U",
+                            "title": "Fill in the Blanks"
+                        },
+                        "subContentId": "e572286d-55ba-4a0f-ae8a-8dd39bd32b3c"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }],
+                "endscreens": [{
+                    "time": 461.775238,
+                    "label": "7:41 Submit screen"
+                }]
+            },
+            "summary": {
+                "task": {
+                    "library": "H5P.Summary 1.10",
+                    "params": {
+                        "intro": "Choose the correct statement.",
+                        "overallFeedback": [{
+                            "from": 0,
+                            "to": 100
+                        }],
+                        "solvedLabel": "Progress:",
+                        "scoreLabel": "Wrong answers:",
+                        "resultLabel": "Your result",
+                        "labelCorrect": "Correct.",
+                        "labelIncorrect": "Incorrect! Please try again.",
+                        "labelCorrectAnswers": "Correct answers.",
+                        "tipButtonLabel": "Show tip",
+                        "scoreBarLabel": "You got :num out of :total points",
+                        "progressText": "Progress :num of :total",
+                        "summaries": [{
+                            "subContentId": "5a7db36a-71c2-4365-b72d-ab1d6b0e0938",
+                            "tip": ""
+                        }],
+                        "alternativeIncorrectLabel": "Incorrect"
+                    },
+                    "metadata": {
+                        "contentType": "Summary",
+                        "license": "U",
+                        "title": "Untitled Summary"
+                    },
+                    "subContentId": "c914cf57-9b6b-4f1f-9b23-eedac7eb02b6"
+                },
+                "displayAt": 3
+            }
+        },
+        "override": {
+            "autoplay": false,
+            "loop": false,
+            "showBookmarksmenuOnLoad": false,
+            "showRewind10": false,
+            "deactivateSound": false,
+            "startVideoAt": 0,
+            "showSolutionButton": "off",
+            "retryButton": "on",
+            "preventSkippingMode": "none"
+        },
+        "l10n": {
+            "interaction": "Interaction",
+            "play": "Play",
+            "pause": "Pause",
+            "mute": "Mute",
+            "unmute": "Unmute",
+            "quality": "Video Quality",
+            "captions": "Captions",
+            "close": "Close",
+            "fullscreen": "Fullscreen",
+            "exitFullscreen": "Exit Fullscreen",
+            "summary": "Summary",
+            "bookmarks": "Bookmarks",
+            "endscreen": "Submit screen",
+            "defaultAdaptivitySeekLabel": "Continue",
+            "continueWithVideo": "Continue with video",
+            "playbackRate": "Playback Rate",
+            "rewind10": "Rewind 10 Seconds",
+            "navDisabled": "Navigation is disabled",
+            "sndDisabled": "Sound is disabled",
+            "requiresCompletionWarning": "You need to answer all the questions correctly before continuing.",
+            "back": "Back",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds",
+            "currentTime": "Current time:",
+            "totalTime": "Total time:",
+            "singleInteractionAnnouncement": "Interaction appeared:",
+            "multipleInteractionsAnnouncement": "Multiple interactions appeared.",
+            "videoPausedAnnouncement": "Video is paused",
+            "content": "Content",
+            "answered": "@answered answered",
+            "endcardTitle": "@answered Question(s) answered",
+            "endcardInformation": "You have answered @answered questions, click below to submit your answers.",
+            "endcardInformationNoAnswers": "You have not answered any questions.",
+            "endcardInformationMustHaveAnswer": "You have to answer at least one question before you can submit your answers.",
+            "endcardSubmitButton": "Submit Answers",
+            "endcardSubmitMessage": "Your answers have been submitted!",
+            "endcardTableRowAnswered": "Answered questions",
+            "endcardTableRowScore": "Score",
+            "endcardAnsweredScore": "answered",
+            "endCardTableRowSummaryWithScore": "You got @score out of @total points for the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endCardTableRowSummaryWithoutScore": "You have answered the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endcardInformationOnSubmitButtonDisabled": "You have answered @answered questions.",
+            "more": "More player options",
+            "navForwardDisabled": "Navigating forward is disabled",
+            "videoProgressBar": "Video progress"
+        }
+    }
+}

@@ -1,0 +1,428 @@
+{        
+    "jsonContentData":{
+        "interactiveVideo": {
+            "video": {
+                "startScreenOptions": {
+                    "title": "EBU5303 Colour Interactive Video (Part 2)",
+                    "hideStartTitle": false
+                },
+                "textTracks": {
+                    "videoTrack": [{
+                        "label": "Subtitles",
+                        "kind": "subtitles",
+                        "srcLang": "en"
+                    }]
+                },
+                "files": [{
+                    "path": "videos\\/files-5e709fa7c62b5.mp4",
+                    "mime": "video\\/mp4",
+                    "copyright": {
+                        "license": "U"
+                    }
+                }]
+            },
+            "assets": {
+                "interactions": [{
+                    "x": 9.7244732576985413,
+                    "y": 5.7636887608069163,
+                    "width": 29.633507853403142,
+                    "height": 20,
+                    "duration": {
+                        "from": 141,
+                        "to": 141
+                    },
+                    "libraryTitle": "Image",
+                    "action": {
+                        "library": "H5P.Image 1.1",
+                        "params": {
+                            "contentName": "Image",
+                            "file": {
+                                "path": "images\\/file-5e70ac8be7c54.png",
+                                "mime": "image\\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1132,
+                                "height": 764
+                            },
+                            "alt": "Stroop Effect",
+                            "decorative": false
+                        },
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "935ac5be-58ee-4509-a4fb-72a05779837f"
+                    },
+                    "visuals": {
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "boxShadow": false
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "goto": {
+                        "url": {
+                            "protocol": "http:\\/\\/"
+                        },
+                        "visualize": true,
+                        "type": "timecode",
+                        "time": 142
+                    },
+                    "label": ""
+                }, {
+                    "x": 4.8622366288492707,
+                    "y": 5.7636887608069163,
+                    "width": 34.375,
+                    "height": 20.623697280883789,
+                    "duration": {
+                        "from": 276,
+                        "to": 276
+                    },
+                    "libraryTitle": "Drag and Drop",
+                    "action": {
+                        "library": "H5P.DragQuestion 1.14",
+                        "params": {
+                            "scoreShow": "Check",
+                            "tryAgain": "Retry",
+                            "scoreExplanation": "Correct answers give +1 point. Incorrect answers give -1 point. The lowest possible score is 0.",
+                            "question": {
+                                "settings": {
+                                    "size": {
+                                        "width": 620,
+                                        "height": 310
+                                    },
+                                    "background": {
+                                        "path": "images\\/background-5e70a78e6c395.jpg",
+                                        "mime": "image\\/jpeg",
+                                        "copyright": {
+                                            "license": "U"
+                                        },
+                                        "width": 521,
+                                        "height": 350,
+                                        "originalImage": {
+                                            "path": "images\\/background-5e70a66d0f5be.jpg#tmp",
+                                            "mime": "image\\/jpeg",
+                                            "height": 569,
+                                            "width": 711
+                                        }
+                                    }
+                                },
+                                "task": {
+                                    "elements": [{
+                                        "x": 2.0202020202020203,
+                                        "y": 0,
+                                        "width": 4.6808293434343433,
+                                        "height": 1.5495162121212123,
+                                        "dropZones": ["0", "1", "2"],
+                                        "type": {
+                                            "library": "H5P.AdvancedText 1.1",
+                                            "params": {
+                                                "text": "<p>610 nm<\\/p>\n"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Text",
+                                                "license": "U",
+                                                "title": "red"
+                                            }
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 18.18181818181818,
+                                        "y": 0,
+                                        "width": 4.6808293434343433,
+                                        "height": 1.5495162121212123,
+                                        "dropZones": ["0", "1", "2"],
+                                        "type": {
+                                            "library": "H5P.AdvancedText 1.1",
+                                            "params": {
+                                                "text": "<p>560 nm<\\/p>\n"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Text",
+                                                "license": "U",
+                                                "title": "green"
+                                            }
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }, {
+                                        "x": 34.343434343434339,
+                                        "y": 0,
+                                        "width": 4.6808293434343433,
+                                        "height": 1.5495162121212123,
+                                        "dropZones": ["0", "1", "2"],
+                                        "type": {
+                                            "library": "H5P.AdvancedText 1.1",
+                                            "params": {
+                                                "text": "<p>430 nm<\\/p>\n"
+                                            },
+                                            "metadata": {
+                                                "contentType": "Text",
+                                                "license": "U",
+                                                "title": "blue"
+                                            }
+                                        },
+                                        "backgroundOpacity": 100,
+                                        "multiple": false
+                                    }],
+                                    "dropZones": [{
+                                        "x": 83.232323232323225,
+                                        "y": 25.101214574898783,
+                                        "width": 5.4797979797979801,
+                                        "height": 1.8787878787878789,
+                                        "correctElements": ["0"],
+                                        "showLabel": false,
+                                        "backgroundOpacity": 0,
+                                        "tipsAndFeedback": {
+                                            "tip": ""
+                                        },
+                                        "single": true,
+                                        "autoAlign": true,
+                                        "label": "<div>Red<\\/div>\n"
+                                    }, {
+                                        "x": 83.232323232323225,
+                                        "y": 60.728744939271252,
+                                        "width": 5.4797979797979801,
+                                        "height": 1.8787878787878789,
+                                        "correctElements": ["2"],
+                                        "showLabel": false,
+                                        "backgroundOpacity": 0,
+                                        "tipsAndFeedback": {
+                                            "tip": ""
+                                        },
+                                        "single": true,
+                                        "autoAlign": true,
+                                        "label": "<div>Blue<\\/div>\n"
+                                    }, {
+                                        "x": 83.232323232323225,
+                                        "y": 80.97165991902834,
+                                        "width": 5.4797979797979801,
+                                        "height": 1.8787878787878789,
+                                        "correctElements": ["1"],
+                                        "showLabel": false,
+                                        "backgroundOpacity": 0,
+                                        "tipsAndFeedback": {
+                                            "tip": ""
+                                        },
+                                        "single": true,
+                                        "autoAlign": true,
+                                        "label": "<div>Green<\\/div>\n"
+                                    }]
+                                }
+                            },
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableCheckButton": true,
+                                "singlePoint": true,
+                                "applyPenalties": false,
+                                "enableScoreExplanation": true,
+                                "dropZoneHighlighting": "dragging",
+                                "autoAlignSpacing": 2,
+                                "enableFullScreen": false,
+                                "showScorePoints": true,
+                                "showTitle": true
+                            },
+                            "grabbablePrefix": "Grabbable {num} of {total}.",
+                            "grabbableSuffix": "Placed in dropzone {num}.",
+                            "dropzonePrefix": "Dropzone {num} of {total}.",
+                            "noDropzone": "No dropzone.",
+                            "tipLabel": "Show tip.",
+                            "tipAvailable": "Tip available",
+                            "correctAnswer": "Correct answer",
+                            "wrongAnswer": "Wrong answer",
+                            "feedbackHeader": "Feedback",
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "scoreExplanationButtonLabel": "Show score explanation",
+                            "localize": {
+                                "fullscreen": "Fullscreen",
+                                "exitFullscreen": "Exit fullscreen"
+                            },
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "submit": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Drag and Drop",
+                            "license": "U",
+                            "title": "Drag each wavelength to the corresponding colour cone"
+                        },
+                        "subContentId": "0bbb0284-a037-4811-918c-1268607e59bf"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 4.8613014269822648,
+                    "y": 17.290623848202554,
+                    "width": 33.75,
+                    "height": 15,
+                    "duration": {
+                        "from": 334,
+                        "to": 334
+                    },
+                    "libraryTitle": "Statements",
+                    "action": {
+                        "library": "H5P.Summary 1.10",
+                        "params": {
+                            "intro": "Choose the correct statement.",
+                            "summaries": [{
+                                "subContentId": "87a9ea6f-5e05-4b5b-80bc-c9b269532dec",
+                                "summary": ["<p>Metamers are colour stimuli that have different spectral power distributions but are perceived as identical for a given observer.<\\/p>\n", "<p>Metamers are colour stimuli that are perceived as different for a given observer although they have identical spectral power distributions.<\\/p>\n"],
+                                "tip": ""
+                            }],
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "solvedLabel": "Progress:",
+                            "scoreLabel": "Wrong answers:",
+                            "resultLabel": "Your result",
+                            "labelCorrect": "Correct.",
+                            "labelIncorrect": "Incorrect! Please try again.",
+                            "labelCorrectAnswers": "Correct answers.",
+                            "tipButtonLabel": "Show tip",
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "progressText": "Progress :num of :total",
+                            "alternativeIncorrectLabel": "Incorrect"
+                        },
+                        "metadata": {
+                            "contentType": "Summary",
+                            "license": "U",
+                            "title": "Metamers"
+                        },
+                        "subContentId": "0ba3496f-182f-475a-ac46-9dfe8075a7fa"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        }
+                    },
+                    "label": ""
+                }],
+                "endscreens": [{
+                    "time": 369.89387799999997,
+                    "label": "6:09 Submit screen"
+                }]
+            },
+            "summary": {
+                "task": {
+                    "library": "H5P.Summary 1.10",
+                    "params": {
+                        "intro": "Choose the correct statement.",
+                        "summaries": [{
+                            "subContentId": "40ae8d68-62fd-4431-8e47-901538ddb0a5",
+                            "tip": ""
+                        }],
+                        "overallFeedback": [{
+                            "from": 0,
+                            "to": 100
+                        }],
+                        "solvedLabel": "Progress:",
+                        "scoreLabel": "Wrong answers:",
+                        "resultLabel": "Your result",
+                        "labelCorrect": "Correct.",
+                        "labelIncorrect": "Incorrect! Please try again.",
+                        "labelCorrectAnswers": "Correct answers.",
+                        "tipButtonLabel": "Show tip",
+                        "scoreBarLabel": "You got :num out of :total points",
+                        "progressText": "Progress :num of :total",
+                        "alternativeIncorrectLabel": "Incorrect"
+                    },
+                    "metadata": {
+                        "contentType": "Summary",
+                        "license": "U",
+                        "title": "Untitled Summary"
+                    },
+                    "subContentId": "78ad2718-8409-4fff-9939-7614e093f34a"
+                },
+                "displayAt": 3
+            }
+        },
+        "override": {
+            "autoplay": false,
+            "loop": false,
+            "showBookmarksmenuOnLoad": false,
+            "showRewind10": false,
+            "deactivateSound": false,
+            "startVideoAt": 0,
+            "showSolutionButton": "off",
+            "retryButton": "on",
+            "preventSkippingMode": "none"
+        },
+        "l10n": {
+            "interaction": "Interaction",
+            "play": "Play",
+            "pause": "Pause",
+            "mute": "Mute",
+            "unmute": "Unmute",
+            "quality": "Video Quality",
+            "captions": "Captions",
+            "close": "Close",
+            "fullscreen": "Fullscreen",
+            "exitFullscreen": "Exit Fullscreen",
+            "summary": "Summary",
+            "bookmarks": "Bookmarks",
+            "endscreen": "Submit screen",
+            "defaultAdaptivitySeekLabel": "Continue",
+            "continueWithVideo": "Continue with video",
+            "playbackRate": "Playback Rate",
+            "rewind10": "Rewind 10 Seconds",
+            "navDisabled": "Navigation is disabled",
+            "sndDisabled": "Sound is disabled",
+            "requiresCompletionWarning": "You need to answer all the questions correctly before continuing.",
+            "back": "Back",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds",
+            "currentTime": "Current time:",
+            "totalTime": "Total time:",
+            "singleInteractionAnnouncement": "Interaction appeared:",
+            "multipleInteractionsAnnouncement": "Multiple interactions appeared.",
+            "videoPausedAnnouncement": "Video is paused",
+            "content": "Content",
+            "answered": "@answered answered",
+            "endcardTitle": "@answered Question(s) answered",
+            "endcardInformation": "You have answered @answered questions, click below to submit your answers.",
+            "endcardInformationNoAnswers": "You have not answered any questions.",
+            "endcardInformationMustHaveAnswer": "You have to answer at least one question before you can submit your answers.",
+            "endcardSubmitButton": "Submit Answers",
+            "endcardSubmitMessage": "Your answers have been submitted!",
+            "endcardTableRowAnswered": "Answered questions",
+            "endcardTableRowScore": "Score",
+            "endcardAnsweredScore": "answered",
+            "endCardTableRowSummaryWithScore": "You got @score out of @total points for the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endCardTableRowSummaryWithoutScore": "You have answered the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endcardInformationOnSubmitButtonDisabled": "You have answered @answered questions.",
+            "more": "More player options",
+            "navForwardDisabled": "Navigating forward is disabled",
+            "videoProgressBar": "Video progress"
+        }
+    }
+}

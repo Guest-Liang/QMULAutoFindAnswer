@@ -1,0 +1,656 @@
+{        
+    "jsonContentData":{
+        "interactiveVideo": {
+            "video": {
+                "startScreenOptions": {
+                    "title": "EBU5303 Digitisation Interactive Video (Part 2)",
+                    "hideStartTitle": false
+                },
+                "textTracks": {
+                    "videoTrack": [{
+                        "label": "Subtitles",
+                        "kind": "subtitles",
+                        "srcLang": "en"
+                    }]
+                },
+                "files": [{
+                    "path": "videos\\/files-5e69d213260dc.mp4",
+                    "mime": "video\\/mp4",
+                    "copyright": {
+                        "license": "U"
+                    }
+                }]
+            },
+            "assets": {
+                "interactions": [{
+                    "x": 3.2414910858995136,
+                    "y": 8.6455331412103735,
+                    "width": 36.25,
+                    "height": 18.758462905883789,
+                    "duration": {
+                        "from": 158,
+                        "to": 158
+                    },
+                    "libraryTitle": "Fill in the Blanks",
+                    "action": {
+                        "library": "H5P.Blanks 1.14",
+                        "params": {
+                            "media": {
+                                "type": {
+                                    "params": {
+                                        "contentName": "Image",
+                                        "file": {
+                                            "path": "images\\/file-5e69d74103030.png",
+                                            "mime": "image\\/png",
+                                            "copyright": {
+                                                "license": "U"
+                                            },
+                                            "width": 889,
+                                            "height": 602
+                                        },
+                                        "alt": "signal",
+                                        "decorative": false
+                                    },
+                                    "library": "H5P.Image 1.1",
+                                    "metadata": {
+                                        "contentType": "Image",
+                                        "license": "U",
+                                        "title": "Untitled Image"
+                                    },
+                                    "subContentId": "27f2450b-3c92-4cf6-a95c-f7d5629247f8"
+                                },
+                                "disableImageZooming": false
+                            },
+                            "text": "<p>Fill in the missing numbers<\\/p>\n",
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "showSolutions": "Show solution",
+                            "tryAgain": "Retry",
+                            "checkAnswer": "Check",
+                            "notFilledOut": "Please fill in all blanks to view solution",
+                            "answerIsCorrect": "&#039;:ans&#039; is correct",
+                            "answerIsWrong": "&#039;:ans&#039; is wrong",
+                            "answeredCorrectly": "Answered correctly",
+                            "answeredIncorrectly": "Answered incorrectly",
+                            "solutionLabel": "Correct answer:",
+                            "inputLabel": "Blank input @num of @total",
+                            "inputHasTipLabel": "Tip available",
+                            "tipLabel": "Tip",
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "enableCheckButton": true,
+                                "autoCheck": false,
+                                "caseSensitive": false,
+                                "showSolutionsRequiresInput": true,
+                                "separateLines": false,
+                                "confirmCheckDialog": false,
+                                "confirmRetryDialog": false,
+                                "acceptSpellingErrors": false
+                            },
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "confirmCheck": {
+                                "header": "Finish ?",
+                                "body": "Are you sure you wish to finish ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Finish"
+                            },
+                            "confirmRetry": {
+                                "header": "Retry ?",
+                                "body": "Are you sure you wish to retry ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Confirm"
+                            },
+                            "questions": ["<p>The sampling rate for this signal is f = *500* Hz. This is because the time interval between two samples (1\\/f) is T = *2* msec.<\\/p>\n"],
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "a11yCheckingModeHeader": "Checking mode",
+                            "submitAnswer": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Fill in the Blanks",
+                            "license": "U",
+                            "title": "Sampling: Fill in the Blanks"
+                        },
+                        "subContentId": "e0fe881b-d9b1-4290-8c89-412869741d44"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 1.6198712850276917,
+                    "y": 5.7625409710805959,
+                    "width": 36.875,
+                    "height": 19.375,
+                    "duration": {
+                        "from": 223,
+                        "to": 223
+                    },
+                    "libraryTitle": "Fill in the Blanks",
+                    "action": {
+                        "library": "H5P.Blanks 1.14",
+                        "params": {
+                            "media": {
+                                "type": {
+                                    "params": {
+                                        "contentName": "Image",
+                                        "file": {
+                                            "path": "images\\/file-5e69d98f08386.png",
+                                            "mime": "image\\/png",
+                                            "copyright": {
+                                                "license": "U"
+                                            },
+                                            "width": 889,
+                                            "height": 602
+                                        },
+                                        "alt": "signal",
+                                        "decorative": false
+                                    },
+                                    "library": "H5P.Image 1.1",
+                                    "metadata": {
+                                        "contentType": "Image",
+                                        "license": "U",
+                                        "title": "Untitled Image"
+                                    },
+                                    "subContentId": "ac471ad5-5dc7-405b-b1ed-7e1761c29548"
+                                },
+                                "disableImageZooming": false
+                            },
+                            "text": "<p>Fill in the missing numbers<\\/p>\n",
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "showSolutions": "Show solution",
+                            "tryAgain": "Retry",
+                            "checkAnswer": "Check",
+                            "notFilledOut": "Please fill in all blanks to view solution",
+                            "answerIsCorrect": "&#039;:ans&#039; is correct",
+                            "answerIsWrong": "&#039;:ans&#039; is wrong",
+                            "answeredCorrectly": "Answered correctly",
+                            "answeredIncorrectly": "Answered incorrectly",
+                            "solutionLabel": "Correct answer:",
+                            "inputLabel": "Blank input @num of @total",
+                            "inputHasTipLabel": "Tip available",
+                            "tipLabel": "Tip",
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "enableCheckButton": true,
+                                "autoCheck": false,
+                                "caseSensitive": false,
+                                "showSolutionsRequiresInput": true,
+                                "separateLines": false,
+                                "confirmCheckDialog": false,
+                                "confirmRetryDialog": false,
+                                "acceptSpellingErrors": false
+                            },
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "confirmCheck": {
+                                "header": "Finish ?",
+                                "body": "Are you sure you wish to finish ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Finish"
+                            },
+                            "confirmRetry": {
+                                "header": "Retry ?",
+                                "body": "Are you sure you wish to retry ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Confirm"
+                            },
+                            "questions": ["<p>In the above signal, a n = *2* bit quantiser has been used, so m = *4* different values can be encoded.&nbsp;<\\/p>\n"],
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "a11yCheckingModeHeader": "Checking mode",
+                            "submitAnswer": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Fill in the Blanks",
+                            "license": "U",
+                            "title": "Quantisation: Fill in the Blanks"
+                        },
+                        "subContentId": "146b84d1-2e9b-4fb4-a241-01c0591dd4f1"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 3.2414301419545728,
+                    "y": 0,
+                    "width": 35.625,
+                    "height": 21.25,
+                    "duration": {
+                        "from": 330,
+                        "to": 330
+                    },
+                    "libraryTitle": "Statements",
+                    "action": {
+                        "library": "H5P.Summary 1.10",
+                        "params": {
+                            "intro": "Choose the correct statement.",
+                            "summaries": [{
+                                "subContentId": "541f7789-5b76-4ba1-ba4e-7b2cd76e94a2",
+                                "tip": "",
+                                "summary": ["<p>With aliasing, what happens is that the higher frequency components of the signal cannot be captured because of the low sampling frequency, which results in overlap in the spectrum.<\\/p>\n", 
+                                "<p>Aliasing occurs when you sample a signal too quickly (at a frequency comparable to or higher than the signal being measured), and obtain an incorrect frequency and\\/or amplitude as a result.<\\/p>\n", 
+                                "<p>Aliasing refers to the effect produced when a signal is imperfectly reconstructed from the original signal. It occurs when a signal is not quantised at a high enough rate.&nbsp;<\\/p>\n", 
+                                "<p>Aliasing refers to the difference between a signal reconstructed from samples and the original continuous signal, when the resolution is too high.<\\/p>\n"]
+                            }],
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "solvedLabel": "Progress:",
+                            "scoreLabel": "Wrong answers:",
+                            "resultLabel": "Your result",
+                            "labelCorrect": "Correct.",
+                            "labelIncorrect": "Incorrect! Please try again.",
+                            "labelCorrectAnswers": "Correct answers.",
+                            "tipButtonLabel": "Show tip",
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "progressText": "Progress :num of :total",
+                            "alternativeIncorrectLabel": "Incorrect"
+                        },
+                        "metadata": {
+                            "contentType": "Summary",
+                            "license": "U",
+                            "title": "Definition of aliasing"
+                        },
+                        "subContentId": "f22d848b-7677-44c4-b2ea-700bce431a08"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        }
+                    },
+                    "label": ""
+                }, {
+                    "x": 3.2414301419545728,
+                    "y": 8.6408149089919419,
+                    "width": 35.625,
+                    "height": 17.5,
+                    "duration": {
+                        "from": 382,
+                        "to": 382
+                    },
+                    "libraryTitle": "Fill in the Blanks",
+                    "action": {
+                        "library": "H5P.Blanks 1.14",
+                        "params": {
+                            "media": {
+                                "type": {
+                                    "params": {
+                                        "contentName": "Image",
+                                        "file": {
+                                            "path": "images\\/file-5e69f29b71110.png",
+                                            "mime": "image\\/png",
+                                            "copyright": {
+                                                "license": "U"
+                                            },
+                                            "width": 784,
+                                            "height": 219
+                                        },
+                                        "alt": "signals",
+                                        "decorative": false
+                                    },
+                                    "library": "H5P.Image 1.1",
+                                    "metadata": {
+                                        "contentType": "Image",
+                                        "license": "U",
+                                        "title": "Untitled Image"
+                                    },
+                                    "subContentId": "216c4a2d-8b57-4954-8e20-5d5c2647f67c"
+                                },
+                                "disableImageZooming": false
+                            },
+                            "text": "<p>Fill in the missing numbers<\\/p>\n",
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "showSolutions": "Show solution",
+                            "tryAgain": "Retry",
+                            "checkAnswer": "Check",
+                            "notFilledOut": "Please fill in all blanks to view solution",
+                            "answerIsCorrect": "&#039;:ans&#039; is correct",
+                            "answerIsWrong": "&#039;:ans&#039; is wrong",
+                            "answeredCorrectly": "Answered correctly",
+                            "answeredIncorrectly": "Answered incorrectly",
+                            "solutionLabel": "Correct answer:",
+                            "inputLabel": "Blank input @num of @total",
+                            "inputHasTipLabel": "Tip available",
+                            "tipLabel": "Tip",
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "enableCheckButton": true,
+                                "autoCheck": false,
+                                "caseSensitive": false,
+                                "showSolutionsRequiresInput": true,
+                                "separateLines": false,
+                                "confirmCheckDialog": false,
+                                "confirmRetryDialog": false,
+                                "acceptSpellingErrors": true
+                            },
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "confirmCheck": {
+                                "header": "Finish ?",
+                                "body": "Are you sure you wish to finish ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Finish"
+                            },
+                            "confirmRetry": {
+                                "header": "Retry ?",
+                                "body": "Are you sure you wish to retry ?",
+                                "cancelLabel": "Cancel",
+                                "confirmLabel": "Confirm"
+                            },
+                            "questions": ["<p>Consider the signal depicted above in time and frequency domain representations. The maximum frequency present in the signal is about *6* kHz. A sampling rate of at least *12* kHz must be used in order to avoid aliasing and accurately reconstruct the signal from its samples.<\\/p>\n"],
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "a11yCheckingModeHeader": "Checking mode",
+                            "submitAnswer": "Submit"
+                        },
+                        "metadata": {
+                            "contentType": "Fill in the Blanks",
+                            "license": "U",
+                            "title": "How to avoid aliaising: Fill in the Blanks"
+                        },
+                        "subContentId": "368c4c46-b07d-4215-883e-474aa939659c"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 3.2414301419545728,
+                    "y": 5.7625409710805959,
+                    "width": 35.625,
+                    "height": 18.125,
+                    "duration": {
+                        "from": 456,
+                        "to": 456
+                    },
+                    "libraryTitle": "Drag Text",
+                    "action": {
+                        "library": "H5P.DragText 1.10",
+                        "params": {
+                            "taskDescription": "Drag the words into the correct boxes",
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "checkAnswer": "Check",
+                            "tryAgain": "Retry",
+                            "showSolution": "Show solution",
+                            "dropZoneIndex": "Drop Zone @index.",
+                            "empty": "Drop Zone @index is empty.",
+                            "contains": "Drop Zone @index contains draggable @draggable.",
+                            "tipLabel": "Show tip",
+                            "correctText": "Correct!",
+                            "incorrectText": "Incorrect!",
+                            "resetDropTitle": "Reset drop",
+                            "resetDropDescription": "Are you sure you want to reset this drop zone?",
+                            "grabbed": "Draggable is grabbed.",
+                            "cancelledDragging": "Cancelled dragging.",
+                            "correctAnswer": "Correct answer:",
+                            "feedbackHeader": "Feedback",
+                            "behaviour": {
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "enableCheckButton": true,
+                                "instantFeedback": false
+                            },
+                            "scoreBarLabel": "You got :num out of :total points",
+                            "textField": "*sampling* errors, also called *aliasing* incur *distortions* that can modify the shapes of objects in an image; *quantisation* errors incur a loss of *details*, for example less *colour* available in the reconstructed image.",
+                            "ariaDraggableIndex": "@index of @count draggables.",
+                            "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                            "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                            "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                            "submitAnswer": "Submit",
+                            "media": {
+                                "disableImageZooming": false
+                            }
+                        },
+                        "metadata": {
+                            "contentType": "Drag the Words",
+                            "license": "U",
+                            "title": "Aliasing and Quantisation Errors: Drag Text"
+                        },
+                        "subContentId": "7a8c2e66-bc90-45fd-875e-44f7f5c0e4ba"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }, {
+                    "x": 3.2414910858995136,
+                    "y": 8.6455331412103735,
+                    "width": 35.625,
+                    "height": 18.125,
+                    "duration": {
+                        "from": 566,
+                        "to": 566
+                    },
+                    "libraryTitle": "Single Choice Set",
+                    "action": {
+                        "library": "H5P.SingleChoiceSet 1.11",
+                        "params": {
+                            "choices": [{
+                                "subContentId": "cd24239d-36ce-4317-bf28-56866f99b806",
+                                "question": "<p>Consider a sound wave W with a frequency f = 440 Hz.&nbsp;You decide to use 5 bits per sample. How many different values can W take and what is a good approximation of the Signal-to-Quantisation Noise Ratio (SQNR) of W?<\\/p>\n",
+                                "answers": ["<p>32 ; 30 dB<\\/p>\n", "<p>30 ; 440 dB<\\/p>\n", "<p>5 ; 880 dB<\\/p>\n", "<p>440 ; 5 dB<\\/p>\n"]
+                            }],
+                            "overallFeedback": [{
+                                "from": 0,
+                                "to": 100
+                            }],
+                            "behaviour": {
+                                "autoContinue": false,
+                                "timeoutCorrect": 2000,
+                                "timeoutWrong": 3000,
+                                "soundEffectsEnabled": false,
+                                "enableRetry": true,
+                                "enableSolutionsButton": false,
+                                "passPercentage": 100
+                            },
+                            "l10n": {
+                                "nextButtonLabel": "Next question",
+                                "showSolutionButtonLabel": "Show solution",
+                                "retryButtonLabel": "Retry",
+                                "solutionViewTitle": "Solution list",
+                                "correctText": "Correct!",
+                                "incorrectText": "Incorrect!",
+                                "muteButtonLabel": "Mute feedback sound",
+                                "closeButtonLabel": "Close",
+                                "slideOfTotal": "Slide :num of :total",
+                                "scoreBarLabel": "You got :num out of :total points",
+                                "solutionListQuestionNumber": "Question :num",
+                                "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                                "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+                                "shouldSelect": "Should have been selected",
+                                "shouldNotSelect": "Should not have been selected"
+                            }
+                        },
+                        "metadata": {
+                            "contentType": "Single Choice Set",
+                            "license": "U",
+                            "title": "SQNR Single Choice Set"
+                        },
+                        "subContentId": "c27ab0b5-4a9e-41a2-9bad-63f351336217"
+                    },
+                    "pause": true,
+                    "displayType": "poster",
+                    "buttonOnMobile": false,
+                    "adaptivity": {
+                        "correct": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "wrong": {
+                            "allowOptOut": true,
+                            "message": ""
+                        },
+                        "requireCompletion": false
+                    },
+                    "label": ""
+                }],
+                "endscreens": [{
+                    "time": 613.56408199999998,
+                    "label": "10:13 Submit screen"
+                }]
+            },
+            "summary": {
+                "task": {
+                    "library": "H5P.Summary 1.10",
+                    "params": {
+                        "intro": "<p>Choose the correct statement.<\\/p>\n",
+                        "summaries": [{
+                            "subContentId": "283e9342-893f-4afe-a405-102632f31fa7",
+                            "tip": ""
+                        }],
+                        "overallFeedback": [{
+                            "from": 0,
+                            "to": 100
+                        }],
+                        "solvedLabel": "Progress:",
+                        "scoreLabel": "Wrong answers:",
+                        "resultLabel": "Your result",
+                        "labelCorrect": "Correct.",
+                        "labelIncorrect": "Incorrect! Please try again.",
+                        "labelCorrectAnswers": "Correct answers.",
+                        "tipButtonLabel": "Show tip",
+                        "scoreBarLabel": "You got :num out of :total points",
+                        "progressText": "Progress :num of :total",
+                        "alternativeIncorrectLabel": "Incorrect"
+                    },
+                    "metadata": {
+                        "contentType": "Summary",
+                        "license": "U",
+                        "title": "Media size Summary"
+                    },
+                    "subContentId": "65218074-5156-46c2-ab9c-824fae3586a5"
+                },
+                "displayAt": 3
+            }
+        },
+        "override": {
+            "autoplay": false,
+            "loop": false,
+            "showBookmarksmenuOnLoad": false,
+            "showRewind10": false,
+            "deactivateSound": false,
+            "startVideoAt": 0,
+            "showSolutionButton": "off",
+            "retryButton": "on",
+            "preventSkippingMode": "none"
+        },
+        "l10n": {
+            "interaction": "Interaction",
+            "play": "Play",
+            "pause": "Pause",
+            "mute": "Mute",
+            "unmute": "Unmute",
+            "quality": "Video Quality",
+            "captions": "Captions",
+            "close": "Close",
+            "fullscreen": "Fullscreen",
+            "exitFullscreen": "Exit Fullscreen",
+            "summary": "Summary",
+            "bookmarks": "Bookmarks",
+            "endscreen": "Submit screen",
+            "defaultAdaptivitySeekLabel": "Continue",
+            "continueWithVideo": "Continue with video",
+            "playbackRate": "Playback Rate",
+            "rewind10": "Rewind 10 Seconds",
+            "navDisabled": "Navigation is disabled",
+            "sndDisabled": "Sound is disabled",
+            "requiresCompletionWarning": "You need to answer all the questions correctly before continuing.",
+            "back": "Back",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds",
+            "currentTime": "Current time:",
+            "totalTime": "Total time:",
+            "singleInteractionAnnouncement": "Interaction appeared:",
+            "multipleInteractionsAnnouncement": "Multiple interactions appeared.",
+            "videoPausedAnnouncement": "Video is paused",
+            "content": "Content",
+            "answered": "@answered answered",
+            "endcardTitle": "@answered Question(s) answered",
+            "endcardInformation": "You have answered @answered questions, click below to submit your answers.",
+            "endcardInformationNoAnswers": "You have not answered any questions.",
+            "endcardInformationMustHaveAnswer": "You have to answer at least one question before you can submit your answers.",
+            "endcardSubmitButton": "Submit Answers",
+            "endcardSubmitMessage": "Your answers have been submitted!",
+            "endcardTableRowAnswered": "Answered questions",
+            "endcardTableRowScore": "Score",
+            "endcardAnsweredScore": "answered",
+            "endCardTableRowSummaryWithScore": "You got @score out of @total points for the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endCardTableRowSummaryWithoutScore": "You have answered the @question that appeared after @minutes minutes and @seconds seconds.",
+            "endcardInformationOnSubmitButtonDisabled": "You have answered @answered questions.",
+            "more": "More player options",
+            "navForwardDisabled": "Navigating forward is disabled",
+            "videoProgressBar": "Video progress"
+        }
+    }
+}
