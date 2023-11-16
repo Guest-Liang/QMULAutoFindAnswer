@@ -26,13 +26,14 @@ QuestionOrders.sort(function(a,b) {
     }
 });
 
+// 处理html字符实体
 function decodeHtml(html) {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
 }
 
-const newbutton = document.createElement("button");
+const newbutton = document.createElement("button"); // 加个按钮咯，按了才能看到答案
 
 newbutton.id = "QMULAutoFindAnswer";
 newbutton.className = "u-button nd-file-list-toolbar-action-item u-button--primary";
@@ -53,7 +54,7 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 break;
             case libraryTitle_types[2]:
                 // console.log("Fill in the Blanks");
-                // 第一个replace去掉转义符，第二个replace去除html标签，第三个replace去除空格符
+                // 第一个replace去掉转义符，第二个replace去除html标签
                 var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
@@ -63,15 +64,20 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
                     console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[1].correctElements}`);
                 }else{
-                    console.log(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
+                    console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
                         console.log(`${j}：${Interations[QuestionOrders[i].order].action.params.question.task.elements[parseFloat(Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].correctElements[0])].type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,'')}x:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].y}`);
                     }
+                    console.groupEnd(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                 }
                 break;
             case libraryTitle_types[4]:
                 // console.log("Single Choice Set");
-                console.log(`第${i+1}个互动是单选题，答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[0].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
+                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
+                    console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
+                }
+                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
                 break;
             case libraryTitle_types[5]:
                 // console.log("Statements");
@@ -91,7 +97,7 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 break;
             case libraryTitle_types[8]:
                 // console.log("Multiple Choice");
-                console.log(`第${i+1}个互动是多选题，答案是\n`);
+                console.group(`第${i+1}个互动是多选题，答案是\n`);
                 var AnswersNum = Interations[QuestionOrders[i].order].action.params.answers.length;
                 for (j=0; j<AnswersNum; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
@@ -100,6 +106,7 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                         console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
                     }
                 }
+                console.groupEnd(`第${i+1}个互动是多选题，答案是\n`);
                 break;
             default:
                 console.warn("Error or unknown type");
