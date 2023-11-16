@@ -26,6 +26,11 @@ QuestionOrders.sort(function(a,b) {
     }
 });
 
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
 
 const newbutton = document.createElement("button");
 
@@ -49,7 +54,7 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
             case libraryTitle_types[2]:
                 // console.log("Fill in the Blanks");
                 // 第一个replace去掉转义符，第二个replace去除html标签，第三个replace去除空格符
-                var Text = Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ');
+                var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
                 break;
@@ -66,11 +71,11 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 break;
             case libraryTitle_types[4]:
                 // console.log("Single Choice Set");
-                console.log(`第${i+1}个互动是单选题，答案是\n${Interations[QuestionOrders[i].order].action.params.choices[0].answers[0].replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ')}`);
+                console.log(`第${i+1}个互动是单选题，答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[0].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
                 break;
             case libraryTitle_types[5]:
                 // console.log("Statements");
-                console.log(`第${i+1}个互动是陈述题（单选），答案是\n${Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ')}`);
+                console.log(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''))}`);
                 break;
             case libraryTitle_types[6]:
                 // console.log("Drag Text");
@@ -80,7 +85,7 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 break;
             case libraryTitle_types[7]:
                 // console.log("Mark the Words");
-                Text = Interations[QuestionOrders[i].order].action.params.textField.replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ');
+                Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.textField.replace(/<(\/)?\w+>/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是标记题，答案是\n${Text_withmark}`);
                 break;
@@ -90,9 +95,9 @@ document.getElementById("QMULAutoFindAnswer").addEventListener("click", () => {
                 var AnswersNum = Interations[QuestionOrders[i].order].action.params.answers.length;
                 for (j=0; j<AnswersNum; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
-                        console.log(`True: ${Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ')}`);
+                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
                     }else{
-                        console.log(`False: ${Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, '').replace(/&nbsp;/g, ' ')}`);
+                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
                     }
                 }
                 break;
