@@ -41,6 +41,22 @@ function sleep(time) {
 }
 
 
+function StyletoDict(style) {
+    styleArray = style.match(/(\w+:\s*[^;]+)/g);
+    var styleObject = {};
+    styleArray.forEach(function (pair) {
+        var parts = pair.split(':');
+        var key = parts[0].trim();
+        var value = parts[1].trim();
+        if (key==='left'||key==='top'){
+            value = parseFloat(value).toFixed(4);
+        }
+        styleObject[key] = value;
+    });
+    return styleObject;
+}
+
+
 async function ShowAnswertoConsole() {
     for (i=0; i<Interations.length; i++) {
         switch (Interations[QuestionOrders[i].order].libraryTitle) {
@@ -55,33 +71,46 @@ async function ShowAnswertoConsole() {
             case libraryTitle_types[2]:
                 // console.log("Fill in the Blanks");
                 // 第一个replace去掉转义符，第二个replace去除html标签
-                var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
+                var Text = decodeHtml(Interations[QuestionOrders[i].order]
+                            .action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
                 break;
             case libraryTitle_types[3]:
                 // console.log("Drag and Drop");
                 if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
-                    console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[1].correctElements}`);
+                    console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                        .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[1].correctElements}`);
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
-                        console.log(`${j}：${Interations[QuestionOrders[i].order].action.params.question.task.elements[parseFloat(Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].correctElements[0])].type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,'')}x:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].y}`);
+                        console.log(`${j}：${Interations[QuestionOrders[i].order]
+                            .action.params.question.task
+                            .elements[parseFloat(Interations[QuestionOrders[i].order]
+                                .action.params.question.task.dropZones[j].correctElements[0])]
+                            .type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,'')}x:${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[j].y}`);
                     }
                     console.groupEnd(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                 }
                 break;
             case libraryTitle_types[4]:
                 // console.log("Single Choice Set");
-                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
+                    .action.params.choices.length}题`);
                 for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
-                    console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
+                    console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
+                        .action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
                 }
-                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
+                    .action.params.choices.length}题`);
                 break;
             case libraryTitle_types[5]:
                 // console.log("Statements");
-                console.log(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''))}`);
+                console.log(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
+                    .action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''))}`);
                 break;
             case libraryTitle_types[6]:
                 // console.log("Drag Text");
@@ -91,7 +120,8 @@ async function ShowAnswertoConsole() {
                 break;
             case libraryTitle_types[7]:
                 // console.log("Mark the Words");
-                Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.textField.replace(/<(\/)?\w+>/g, ''));
+                Text = decodeHtml(Interations[QuestionOrders[i].order]
+                    .action.params.textField.replace(/<(\/)?\w+>/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是标记题，答案是\n${Text_withmark}`);
                 break;
@@ -100,9 +130,11 @@ async function ShowAnswertoConsole() {
                 console.group(`第${i+1}个互动是多选题，答案是\n`);
                 for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
-                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
+                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order]
+                            .action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
                     }else{
-                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
+                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order]
+                            .action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
                     }
                 }
                 console.groupEnd(`第${i+1}个互动是多选题，答案是\n`);
@@ -144,13 +176,15 @@ async function AutoAnswer() {
                 nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
                 await sleep(5000);
                 console.log(`第${i+1}个互动已自动选择`);
-                console.groupEnd(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order].action.params.correct}`);
+                console.groupEnd(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order]
+                    .action.params.correct}`);
                 await sleep(500);
                 break;
             case libraryTitle_types[2]: // done
                 // console.log("Fill in the Blanks");
                 // 第一个replace去掉转义符，第二个replace去除html标签
-                Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''));
+                Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0]
+                    .replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 inputs=nowFocus[0].getElementsByClassName("h5p-text-input"); // 当前题目的输入框
@@ -190,20 +224,55 @@ async function AutoAnswer() {
                 // console.log("Drag and Drop");
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
-                    console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[1].correctElements}`);
+                    console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                        .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
+                        .action.params.question.task.dropZones[1].correctElements}`);
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
-                        console.log(`${j}：${Interations[QuestionOrders[i].order].action.params.question.task.elements[parseFloat(Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].correctElements[0])].type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,'')}x:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].y}`);
+                        console.log(`${j}：${Interations[QuestionOrders[i].order].action.params.question.task
+                            .elements[parseFloat(Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].correctElements[0])]
+                            .type.params.text.replace(/<(\/)?\w+>|\n/g, '')}\nx:${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[j].y}`);
                     }
+                    console.log(`正在自动填入中……`);
+                    DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
+                    imgs=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-advanced-text"); // querySelector静态拷贝
+                l1: for (j=0;j<DropZones.length;j++) {
+                        DropZonesStyle=StyletoDict(DropZones[j].getAttribute("style"));
+                    l2: for(k=0;k<imgs.length;k++){
+                            console.log(`同时满足：${Interations[QuestionOrders[i].order]
+                                .action.params.question.task.dropZones[k]
+                                .x.toFixed(4) === DropZonesStyle.left && Interations[QuestionOrders[i].order]
+                                .action.params.question.task.dropZones[k]
+                                .y.toFixed(4) === DropZonesStyle.top}`);
+                            if (Interations[QuestionOrders[i].order]
+                                .action.params.question.task.dropZones[k]
+                                .x.toFixed(4) === DropZonesStyle.left && Interations[QuestionOrders[i].order]
+                                .action.params.question.task.dropZones[k]
+                                .y.toFixed(4) === DropZonesStyle.top)
+                            {break;}
+                            else{continue;}
+                        }
+                        DropZones[j].appendChild(imgs[k]); // 将图片放入dropzone
+                        DropZones[j].lastChild.click();
+                        console.log(`第${j+1}个选项已自动填入`);
+                        await sleep(1000);
+                    }
+                    console.log(`第${i+1}个互动已自动选择`);
+                    await sleep(5000);
                     console.groupEnd(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
+                    await sleep(500);
                 }
                 break;
             case libraryTitle_types[4]: // done
                 // console.log("Single Choice Set");
-                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
+                    .action.params.choices.length}题`);
                 for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
-                    console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
+                    console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
+                        .action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
                 }
                 console.log(`正在自动选择中……`);
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
@@ -218,25 +287,30 @@ async function AutoAnswer() {
                 console.log(`等待跳转结算页……`);
                 await sleep(5000); // 等待跳到结算页面
                 console.log(`第${i+1}个互动已自动选择`);
-                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
+                    .action.params.choices.length}题`);
                 await sleep(500);
                 break;
             case libraryTitle_types[5]: // done
                 // console.log("Statements");
-                console.group(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''))}`);
+                console.group(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
+                    .action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''))}`);
                 console.log(`正在自动选择中……`);
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 await sleep(500);
                 nowQuestion=nowFocus[0].getElementsByClassName("summary-claim-unclicked"); //当前题目的选项
                 for (j=0;j<nowQuestion.length;j++) {
-                    if (nowQuestion[j].innerText==decodeHtml(Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''))){
+                    if (nowQuestion[j].innerText==decodeHtml(Interations[QuestionOrders[i].order]
+                        .action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, '')))
+                    {
                         nowQuestion[j].click();
                         console.log(`第${j+1}个选项已自动选择`);
                         await sleep(5000);
                     }
                 }
                 console.log(`第${i+1}个互动已自动选择`);
-                console.groupEnd(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''))}`);
+                console.groupEnd(`第${i+1}个互动是陈述题（单选），答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
+                    .action.params.summaries[0].summary[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''))}`);
                 await sleep(500);
                 break;
             case libraryTitle_types[6]:
@@ -279,9 +353,11 @@ async function AutoAnswer() {
                 console.group(`第${i+1}个互动是多选题，答案是\n`);
                 for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
-                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
+                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order]
+                            .action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
                     }else{
-                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
+                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order]
+                            .action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
                     }
                 }
                 console.log(`正在自动选择中……`);
@@ -291,7 +367,9 @@ async function AutoAnswer() {
                 for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
                         for(k=0;k<nowQuestion.length;k++) {
-                            if (nowQuestion[k].innerText == decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))) {
+                            if (nowQuestion[k].innerText == decodeHtml(Interations[QuestionOrders[i].order]
+                                .action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, '')))
+                            {
                                 nowQuestion[k].click();
                                 console.log(`第${k+1}个选项已自动选择`);
                                 await sleep(500);
@@ -351,16 +429,3 @@ document.querySelector("div.page-context-header").prepend(newbutton2);
 document.getElementById("AutoAnswer").addEventListener("click", () => {
     AutoAnswer();
 });
-
-/**
-images=newdoc.getElementsByClassName("h5p-draggable ui-draggable ui-draggable-handle h5p-image");
-console.log(images[0].style.left);
-images[0].style.left=3+"%";
-console.log(images[0].style.left);
-console.log(images[0].style.top);
-images[0].style.top=50+"%";
-console.log(images[0].style.top);
-
-
-nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background");
-words=nowFocus[0].getElementsByClassName("h5p-word-selectable-words");
