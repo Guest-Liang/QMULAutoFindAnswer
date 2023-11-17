@@ -113,19 +113,6 @@ async function ShowAnswertoConsole() {
     };
 }
 
-const Selector_types=[ // 与上面的libraryTitle_types对应
-    "div.h5p-seekbar-interaction.h5p-image-interaction",
-    "div.h5p-seekbar-interaction.h5p-truefalse-interaction",
-    "",
-    "",
-    "div.h5p-seekbar-interaction.h5p-singlechoiceset-interaction",
-    "",
-    "",
-    "",
-    "div.h5p-seekbar-interaction.h5p-multichoice-interaction"
-];
-
-
 
 async function AutoAnswer() {
     AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0];
@@ -159,12 +146,31 @@ async function AutoAnswer() {
                 console.groupEnd(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order].action.params.correct}`);
                 await sleep(500);
                 break;
-            case libraryTitle_types[2]:
+            case libraryTitle_types[2]: // done
                 // console.log("Fill in the Blanks");
                 // 第一个replace去掉转义符，第二个replace去除html标签
-                var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
+                var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
-                console.log(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
+                console.group(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
+                console.log(`正在自动填入中……`);
+                ans=Text.match(/\*(.*?)\*/g);
+                for (j=0;j<ans.length;j++) {
+                    ans[j] = ans[j].replace(/\*/g, ''); // 去掉*
+                    if (ans[j].includes("/")){
+                        ans[j] = ans[j].split("/"); // 如果有/，拆开
+                    }
+                }
+                for (j=0;j<inputs.length;j++) {
+                    if (typeof(ans[j])=="object") {inputs[j].value = ans[j][parseInt(Math.random()*ans[j].length)];} 
+                    else {inputs[j].value = ans[j];}
+                    console.log(`第${j+1}个空已自动填入`);
+                    await sleep(1000);
+                }
+                nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
+                await sleep(3000);
+                console.log(`第${i+1}个互动已自动选择`);
+                console.groupEnd(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
+                await sleep(500);
                 break;
             case libraryTitle_types[3]:
                 // console.log("Drag and Drop");
@@ -252,11 +258,15 @@ async function AutoAnswer() {
     };
     await sleep(2000);
     console.log(`已自动答题完毕，提交中……`);
+
+    newdoc.getElementsByClassName("h5p-control h5p-star h5p-star-foreground")[0].click(); // 呼出提交窗口
+    await sleep(3000);
+    console.log(`点击提交成功`);
+    // todo：加个判断是否总得分相等再点击提交
+    // newdoc.getElementsByClassName("h5p-interactive-video-endscreen-submit-button h5p-joubelui-button")[0].click(); // 点击提交按钮
+
 }
 
-async function AutoSubmit() {
-    
-}
 
 const newbutton = document.createElement("button"); // 加个按钮咯，按了才能看到答案
 newbutton.id = "QMULAutoFindAnswer";
@@ -277,3 +287,24 @@ document.querySelector("div.page-context-header").prepend(newbutton2);
 document.getElementById("AutoAnswer").addEventListener("click", () => {
     AutoAnswer();
 });
+
+/**
+nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
+inputs=nowFocus[0].getElementsByClassName("h5p-text-input"); // 当前题目的输入框
+ans=Text.match(/\*(.*?)\*/g);
+for (j=0;j<ans.length;j++) {
+    ans[j] = ans[j].replace(/\*/g, ''); // 去掉*
+    if (ans[j].includes("/")){
+        ans[j] = ans[j].split("/"); // 如果有/，拆开
+    }
+}
+for (j=0;j<inputs.length;j++) {
+    if (typeof(ans[j])=="object") {
+        inputs[j].value = ans[j][parseInt(Math.random()*ans[j].length)];
+    }
+    else {
+        inputs[j].value = ans[j];
+    }
+}
+var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
+Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
