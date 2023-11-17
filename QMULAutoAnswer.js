@@ -151,6 +151,8 @@ async function AutoAnswer() {
                 // 第一个replace去掉转义符，第二个replace去除html标签
                 var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>|\n/g, ''));
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
+                nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
+                inputs=nowFocus[0].getElementsByClassName("h5p-text-input"); // 当前题目的输入框
                 console.group(`第${i+1}个互动是填空题，答案是\n${Text_withmark}`);
                 console.log(`正在自动填入中……`);
                 ans=Text.match(/\*(.*?)\*/g);
@@ -287,24 +289,3 @@ document.querySelector("div.page-context-header").prepend(newbutton2);
 document.getElementById("AutoAnswer").addEventListener("click", () => {
     AutoAnswer();
 });
-
-/**
-nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
-inputs=nowFocus[0].getElementsByClassName("h5p-text-input"); // 当前题目的输入框
-ans=Text.match(/\*(.*?)\*/g);
-for (j=0;j<ans.length;j++) {
-    ans[j] = ans[j].replace(/\*/g, ''); // 去掉*
-    if (ans[j].includes("/")){
-        ans[j] = ans[j].split("/"); // 如果有/，拆开
-    }
-}
-for (j=0;j<inputs.length;j++) {
-    if (typeof(ans[j])=="object") {
-        inputs[j].value = ans[j][parseInt(Math.random()*ans[j].length)];
-    }
-    else {
-        inputs[j].value = ans[j];
-    }
-}
-var Text = decodeHtml(Interations[QuestionOrders[i].order].action.params.questions[0].replace(/\\\//g, '/').replace(/<(\/)?\w+>/g, ''));
-Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
