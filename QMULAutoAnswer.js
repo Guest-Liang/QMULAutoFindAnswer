@@ -122,28 +122,29 @@ const Selector_types=[ // 与上面的libraryTitle_types对应
     "",
     "",
     "",
-    ""
+    "div.h5p-seekbar-interaction.h5p-multichoice-interaction"
 ];
 
 
 
-
-// 自动答题
 async function AutoAnswer() {
-    for (i=0; i<Interations.length; i++) {
-        switch (Interations[QuestionOrders[i].order].libraryTitle) {
+    AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0];
+    for (i=0;i<AllInterations.children.length;i++) {
+        AllInterations.children[i].click();
+        await sleep(1000); // 等待页面元素加载
+        switch (newdoc.getElementsByClassName("h5p-interactions-container")[0].children[i].getAttribute("title")) {
             case libraryTitle_types[0]: // done
                 // console.log("Image");
                 console.log(`第${i+1}个互动是图片，无需答题`);
+                await sleep(500);
                 break;
             case libraryTitle_types[1]: // done
                 // console.log("True/False Question");
                 console.group(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order].action.params.correct}`);
                 console.log(`正在自动选择中……`);
-                newdoc.querySelector(Selector_types[1]).click(); // 选中这一题
-                await sleep(1000);
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
-                nowQuestion=nowFocus[0].getElementsByClassName("h5p-true-false-answer"); //当前题目的元素
+                await sleep(500);
+                nowQuestion=nowFocus[0].getElementsByClassName("h5p-true-false-answer"); //当前题目的元选项
                 if (Interations[QuestionOrders[i].order].action.params.correct == 'true') {
                     if (nowQuestion[0].innerText == "True") {nowQuestion[0].click(); await sleep(500);}
                     else {nowQuestion[1].click(); await sleep(500);}
@@ -151,10 +152,12 @@ async function AutoAnswer() {
                     if (nowQuestion[0].innerText == "False") {nowQuestion[0].click(); await sleep(500);}
                     else {nowQuestion[1].click(); await sleep(500);}
                 }
-                await sleep(1000);
+                await sleep(500);
                 nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
-                console.log(`已自动选择`);
+                await sleep(5000);
+                console.log(`第${i+1}个互动已自动选择`);
                 console.groupEnd(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order].action.params.correct}`);
+                await sleep(500);
                 break;
             case libraryTitle_types[2]:
                 // console.log("Fill in the Blanks");
@@ -182,17 +185,19 @@ async function AutoAnswer() {
                     console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order].action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
                 }
                 console.log(`正在自动选择中……`);
-                newdoc.querySelector(Selector_types[4]).click(); // 选中这一题
-                await sleep(1000);
+                nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
+                await sleep(500);
                 corrects=newdoc.getElementsByClassName("h5p-sc-is-correct");
                 for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
                     corrects[j].click();
-                    await sleep(4000); // 等一下再选下一题
+                    console.log(`第${j+1}题已自动选择`);
+                    await sleep(5000); // 等跳到下一页再选下一题
                 }
-                console.log(`已自动选择`);
-                await sleep(4000);
-                //这里就不用check了，直接点下一个
+                await sleep(5000); // 等待跳到结算页面
+                // nowFocus[0].getElementsByClassName("h5p-question-iv-continue h5p-joubelui-button")[0].click(); // 点个continue
+                console.log(`第${i+1}个互动已自动选择`);
                 console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order].action.params.choices.length}题`);
+                await sleep(500);
                 break;
             case libraryTitle_types[5]:
                 // console.log("Statements");
@@ -210,24 +215,47 @@ async function AutoAnswer() {
                 Text_withmark = Text.replace(/\*(.*?)\*/g, "\x1b[40;37m$1\x1b[0m");
                 console.log(`第${i+1}个互动是标记题，答案是\n${Text_withmark}`);
                 break;
-            case libraryTitle_types[8]:
+            case libraryTitle_types[8]: // done
                 // console.log("Multiple Choice");
                 console.group(`第${i+1}个互动是多选题，答案是\n`);
                 for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
                     if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
-                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
+                        console.log(`True: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
                     }else{
-                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>/g, ''))}`);
+                        console.log(`False: ${decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))}`);
                     }
                 }
-
+                console.log(`正在自动选择中……`);
+                nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
+                await sleep(500);
+                nowQuestion=nowFocus[0].getElementsByClassName("h5p-alternative-inner"); //当前题目的选项
+                for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
+                    if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
+                        for(k=0;k<nowQuestion.length;k++) {
+                            if (nowQuestion[k].innerText == decodeHtml(Interations[QuestionOrders[i].order].action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, ''))) {
+                                nowQuestion[k].click();
+                                console.log(`第${k+1}个选项已自动选择`);
+                                await sleep(500);
+                            }
+                        }
+                    }
+                }
+                nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
+                await sleep(5000);
+                console.log(`第${i+1}个互动已自动选择`);
                 console.groupEnd(`第${i+1}个互动是多选题，答案是\n`);
+                await sleep(500);
                 break;
             default:
                 console.warn("Error or unknown type");
         };
     };
-    console.log(`已自动答题完毕`);
+    await sleep(2000);
+    console.log(`已自动答题完毕，提交中……`);
+}
+
+async function AutoSubmit() {
+    
 }
 
 const newbutton = document.createElement("button"); // 加个按钮咯，按了才能看到答案
