@@ -147,10 +147,10 @@ async function ShowAnswertoConsole() {
 
 
 async function AutoAnswer() {
-    AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0];
+    AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0]; // 获取所有互动
     for (i=0;i<AllInterations.children.length;i++) {
-        AllInterations.children[i].click();
-        await sleep(2000); // 等待页面元素加载
+        AllInterations.children[i].click(); // 选中当前互动
+        await sleep(2000); // 等待页面元素加载  
         nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
         switch (newdoc.getElementsByClassName("h5p-interactions-container")[0].children[i].getAttribute("title")) {
             case libraryTitle_types[0]: // done
@@ -160,7 +160,7 @@ async function AutoAnswer() {
                 break;
             case libraryTitle_types[1]: // done
                 // console.log("True/False Question");
-                console.group(`第${i+1}个互动是判断题，答案是${Interations[QuestionOrders[i].order].action.params.correct}`);
+                console.group(`第${i+1}个互动是判断题，答案是\n${Interations[QuestionOrders[i].order].action.params.correct}`);
                 console.log(`正在自动选择中……`);
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 await sleep(500);
@@ -249,7 +249,6 @@ async function AutoAnswer() {
                                 .elements[parseFloat(Interations[QuestionOrders[i].order]
                                 .action.params.question.task.dropZones[j].correctElements[0])]
                                 .type.params.text.replace(/<(\/)?\w+>|\n/g, '')===imgs[k].children[1].innerText;
-                            console.log(`同时满足：${result}`);
                             if (result) {break;}
                         }
                         DropZones[j].appendChild(imgs[k]); // 将图片放入dropzone
@@ -326,23 +325,23 @@ async function AutoAnswer() {
                 }
                 for (j=0;j<DropZones.length;j++) {
                     for(k=0;k<WordstoPut.length;k++) {
-                        result=ans[j]===WordstoPut[k].children[0].innerText;
-                        console.log(`同时满足：${result}`);
+                        if(WordstoPut[k].children.length==0) {
+                            result=ans[j]===WordstoPut[k].innerText;
+                        }else{
+                            result=ans[j]===WordstoPut[k].children[0].innerText;
+                        }
                         if (result) {break;}
                     }
-                    DropZones[j].prepend(WordstoPut[k]); // 将文字放入dropzone
-                    // DropZones[j].appendChild(WordstoPut[k]); // 将文字放入dropzone
-                    // DropZones[j].insertBefore(WordstoPut[k], DropZones[j].childNodes[1]);
-                    // DropZones[j].removeChild(DropZones[j].childNodes[0]);
-                    // DropZones[j].fisrtChild.click();
+                    DropZones[j].children[0].appendChild(WordstoPut[k]); // 将文字放入dropzone
                     WordstoPut[k].click();
                     console.log(`第${j+1}个选项已自动填入`);
                     await sleep(1000);
                 }
-
-
-
+                nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
+                console.log(`第${i+1}个互动已自动选择`);
+                await sleep(5000);
                 console.groupEnd(`第${i+1}个互动是拖拉题-文本，答案是\n${Text_withmark}`);
+                await sleep(500);
                 break;
             case libraryTitle_types[7]: // done
                 // console.log("Mark the Words");
@@ -423,12 +422,13 @@ async function AutoAnswer() {
         }
     };
     await sleep(2000);
-    console.log(`已自动答题完毕，提交中……`);
+    console.log(`已自动答题完毕`);
 
     newdoc.getElementsByClassName("h5p-control h5p-star h5p-star-foreground")[0].click(); // 呼出提交窗口
     await sleep(3000);
-    console.log(`点击提交成功`);
+    console.log(`呼出提交窗口成功`);
     // todo：加个判断是否总得分相等再点击提交
+    // todo: await 元素加载完成再点击
     // newdoc.getElementsByClassName("h5p-interactive-video-endscreen-submit-button h5p-joubelui-button")[0].click(); // 点击提交按钮
 
 }
