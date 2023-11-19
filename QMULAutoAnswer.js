@@ -146,6 +146,14 @@ async function ShowAnswertoConsole() {
 }
 
 
+function fireKeyEvent(element, evtType, keyChar) { // 模拟键盘输入，尝试解决input无法提交数据
+    element.focus();
+    var KeyboardEventInit = {key:keyChar, code:"", location:0, repeat:false, isComposing:false};
+    var evtObj = new KeyboardEvent(evtType, KeyboardEventInit);
+    element.dispatchEvent(evtObj);
+}
+
+
 async function AutoAnswer() {
     AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0]; // 获取所有互动
     for (i=0;i<AllInterations.children.length;i++) {
