@@ -224,9 +224,32 @@ async function AutoAnswer() {
                 // console.log("Drag and Drop");
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
-                    console.log(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                    console.group(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[1].correctElements}`);
+                    console.log(`正在自动填入中……`);
+                    DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
+                    imgs=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-image"); // querySelector静态拷贝
+                    for(j=0;j<imgs.length;j++) {
+                        if (Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[0].correctElements.includes(j.toString()))
+                        {
+                            DropZones[0].appendChild(imgs[j]);
+
+                        }else{
+                            DropZones[1].appendChild(imgs[j]);
+                        }
+                        imgs[j].click();
+                        console.log(`第${j+1}个选项已自动填入`);
+                        await sleep(1000);
+                    }
+                    nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
+                    console.log(`第${i+1}个互动已自动选择`);
+                    await sleep(5000);
+                    console.groupEnd(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                        .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
+                        .action.params.question.task.dropZones[1].correctElements}`);
+                    await sleep(500);
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
