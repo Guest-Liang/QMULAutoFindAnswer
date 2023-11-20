@@ -85,11 +85,11 @@ async function ShowAnswertoConsole() {
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
-                        console.log(`${j}：${Interations[QuestionOrders[i].order]
+                        console.log(`${j}：${decodeHtml(Interations[QuestionOrders[i].order]
                             .action.params.question.task
                             .elements[parseFloat(Interations[QuestionOrders[i].order]
                                 .action.params.question.task.dropZones[j].correctElements[0])]
-                            .type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,'')}x:${Interations[QuestionOrders[i].order]
+                            .type.params.text.replace(/<(\/)?\w+>/g, '').replace(/\\n/g,''))}x:${Interations[QuestionOrders[i].order]
                             .action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order]
                             .action.params.question.task.dropZones[j].y}`);
                     }
@@ -156,6 +156,7 @@ function fireKeyEvent(element, evtType, keyChar) { // 模拟键盘输入，尝�
 
 async function AutoAnswer() {
     AllInterations=newdoc.getElementsByClassName("h5p-interactions-container")[0]; // 获取所有互动
+    await sleep(2000); // 等待页面元素加载
     for (i=0;i<AllInterations.children.length;i++) {
         AllInterations.children[i].click(); // 选中当前互动
         await sleep(2000); // 等待页面元素加载  
@@ -232,38 +233,44 @@ async function AutoAnswer() {
                 // console.log("Drag and Drop");
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
-                    console.group(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                    console.group(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[1].correctElements}`);
                     console.log(`正在自动填入中……`);
                     DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
-                    imgs=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-image"); // querySelector静态拷贝
-                    for(j=0;j<imgs.length;j++) {
+                    if (Interations[QuestionOrders[i].order].action.params.question.task.elements[0].type.metadata.contentType === "Image") {
+                        ContenttoPut=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-image"); // querySelector静态拷贝
+                        console.log(`图片分类题目`);
+                    } else {
+                        ContenttoPut=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-advanced-text"); // querySelector静态拷贝
+                        console.log(`文字分类题目`);
+                    }
+                    for(j=0;j<ContenttoPut.length;j++) {
                         if (Interations[QuestionOrders[i].order]
                             .action.params.question.task.dropZones[0].correctElements.includes(j.toString()))
                         {
-                            DropZones[0].appendChild(imgs[j]);
+                            DropZones[0].appendChild(ContenttoPut[j]);
 
                         }else{
-                            DropZones[1].appendChild(imgs[j]);
+                            DropZones[1].appendChild(ContenttoPut[j]);
                         }
-                        imgs[j].click();
+                        ContenttoPut[j].click();
                         console.log(`第${j+1}个选项已自动填入`);
                         await sleep(1000);
                     }
                     nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
                     console.log(`第${i+1}个互动已自动选择`);
                     await sleep(5000);
-                    console.groupEnd(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，图片序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
+                    console.groupEnd(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
                         .action.params.question.task.dropZones[1].correctElements}`);
                     await sleep(500);
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
                     for (j=0; j<Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length; j++) {
-                        console.log(`${j}：${Interations[QuestionOrders[i].order].action.params.question.task
+                        console.log(`${j}：${decodeHtml(Interations[QuestionOrders[i].order].action.params.question.task
                             .elements[parseFloat(Interations[QuestionOrders[i].order].action.params.question.task.dropZones[j].correctElements[0])]
-                            .type.params.text.replace(/<(\/)?\w+>|\n/g, '')}\nx:${Interations[QuestionOrders[i].order]
+                            .type.params.text.replace(/<(\/)?\w+>|\n/g, ''))}\nx:${Interations[QuestionOrders[i].order]
                             .action.params.question.task.dropZones[j].x}，  y:${Interations[QuestionOrders[i].order]
                             .action.params.question.task.dropZones[j].y}`);
                     }
@@ -276,16 +283,18 @@ async function AutoAnswer() {
                     }
                     for (j=0;j<DropZones.length;j++) {
                         for(k=0;k<imgs.length;k++) {
-                            result=Interations[QuestionOrders[i].order].action.params.question.task
+                            result=decodeHtml(Interations[QuestionOrders[i].order].action.params.question.task
                                 .elements[parseFloat(Interations[QuestionOrders[i].order]
                                 .action.params.question.task.dropZones[j].correctElements[0])]
-                                .type.params.text.replace(/<(\/)?\w+>|\n/g, '')===imgs[k].children[1].innerText;
-                            if (result) {break;}
+                                .type.params.text.replace(/<(\/)?\w+>|\n/g, ''))===imgs[k].children[1].innerText;
+                            if (result) {
+                                DropZones[j].appendChild(imgs[k]); // 将图片放入dropzone
+                                DropZones[j].lastChild.click();
+                                console.log(`第${j+1}个选项已自动填入`);
+                                await sleep(1000);
+                                break;
+                            }
                         }
-                        DropZones[j].appendChild(imgs[k]); // 将图片放入dropzone
-                        DropZones[j].lastChild.click();
-                        console.log(`第${j+1}个选项已自动填入`);
-                        await sleep(1000);
                     }
                     nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
                     console.log(`第${i+1}个互动已自动选择`);
@@ -296,9 +305,14 @@ async function AutoAnswer() {
                 break;
             case libraryTitle_types[4]: // done
                 // console.log("Single Choice Set");
-                console.group(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
-                    .action.params.choices.length}题`);
-                for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
+                for(j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) { // 去除空白题目导致的识别错误
+                    ActualLength=0;
+                    if(Interations[QuestionOrders[i].order].action.params.choices[j].question==null) {
+                        ActualLength=ActualLength+1;
+                    }
+                }
+                console.group(`第${i+1}个互动是单选题，本互动内共${ActualLength}题`);
+                for (j=0;j<ActualLength;j++) {
                     console.log(`第${j+1}题的答案是\n${decodeHtml(Interations[QuestionOrders[i].order]
                         .action.params.choices[j].answers[0].replace(/<(\/)?\w+>/g, ''))}`);
                 }
@@ -306,17 +320,16 @@ async function AutoAnswer() {
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
                 await sleep(500);
                 corrects=newdoc.getElementsByClassName("h5p-sc-is-correct");
-                for (j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) {
+                for (j=0;j<ActualLength;j++) {
                     corrects[j].click();
                     console.log(`第${j+1}题已自动选择`);
-                    console.log(`等待跳转下一页……`);
+                    console.log(`等待跳转下一页……`);    
                     await sleep(5000); // 等跳到下一页再选下一题
                 }
                 console.log(`等待跳转结算页……`);
                 await sleep(5000); // 等待跳到结算页面
                 console.log(`第${i+1}个互动已自动选择`);
-                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${Interations[QuestionOrders[i].order]
-                    .action.params.choices.length}题`);
+                console.groupEnd(`第${i+1}个互动是单选题，本互动内共${ActualLength}题`);
                 await sleep(500);
                 break;
             case libraryTitle_types[5]: // done
@@ -361,12 +374,14 @@ async function AutoAnswer() {
                         }else{
                             result=ans[j]===WordstoPut[k].children[0].innerText;
                         }
-                        if (result) {break;}
+                        if (result) {
+                            DropZones[j].children[0].appendChild(WordstoPut[k]); // 将文字放入dropzone
+                            WordstoPut[k].click();
+                            console.log(`第${j+1}个选项已自动填入`);
+                            await sleep(1000);
+                            break;
+                        }
                     }
-                    DropZones[j].children[0].appendChild(WordstoPut[k]); // 将文字放入dropzone
-                    WordstoPut[k].click();
-                    console.log(`第${j+1}个选项已自动填入`);
-                    await sleep(1000);
                 }
                 nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
                 console.log(`第${i+1}个互动已自动选择`);
@@ -419,16 +434,17 @@ async function AutoAnswer() {
                 await sleep(500);
                 nowQuestion=nowFocus[0].getElementsByClassName("h5p-alternative-inner"); //当前题目的选项
                 for (j=0; j<Interations[QuestionOrders[i].order].action.params.answers.length; j++) {
-                    if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
-                        for(k=0;k<nowQuestion.length;k++) {
-                            if (nowQuestion[k].innerText == decodeHtml(Interations[QuestionOrders[i].order]
+                    for(k=0;k<nowQuestion.length;k++) {
+                        if (Interations[QuestionOrders[i].order].action.params.answers[j].correct == true) {
+                            if (decodeHtml(nowQuestion[k].innerHTML.replace(/<(\/)?\w+>|\n/g,'')) == decodeHtml(Interations[QuestionOrders[i].order]
                                 .action.params.answers[j].text.replace(/<(\/)?\w+>|\n/g, '')))
                             {
                                 nowQuestion[k].click();
                                 console.log(`第${k+1}个选项已自动选择`);
                                 await sleep(500);
+                                break;
                             }
-                        }
+                        } else {break;}
                     }
                 }
                 nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
@@ -449,7 +465,7 @@ async function AutoAnswer() {
         if (nowFocus[0].getElementsByClassName("h5p-question-iv-continue h5p-joubelui-button").length != 0) { // 如果有继续按钮，点一下
             nowFocus[0].getElementsByClassName("h5p-question-iv-continue h5p-joubelui-button")[0].click();
             console.log(`Continuning……`);
-            await sleep(2000);
+            await sleep(500);
         }
     };
     await sleep(2000);
