@@ -175,11 +175,11 @@ async function AutoAnswer() {
                 await sleep(500);
                 nowQuestion=nowFocus[0].getElementsByClassName("h5p-true-false-answer"); //当前题目的元选项
                 if (Interations[QuestionOrders[i].order].action.params.correct == 'true') {
-                    if (nowQuestion[0].innerText == "True") {nowQuestion[0].click(); await sleep(500);}
-                    else {nowQuestion[1].click(); await sleep(500);}
+                    if (nowQuestion[0].innerText == "True") {nowQuestion[0].click();}
+                    else {nowQuestion[1].click();}
                 }else{
-                    if (nowQuestion[0].innerText == "False") {nowQuestion[0].click(); await sleep(500);}
-                    else {nowQuestion[1].click(); await sleep(500);}
+                    if (nowQuestion[0].innerText == "False") {nowQuestion[0].click();}
+                    else {nowQuestion[1].click();}
                 }
                 await sleep(500);
                 nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
@@ -232,38 +232,41 @@ async function AutoAnswer() {
             case libraryTitle_types[3]:
                 // console.log("Drag and Drop");
                 nowFocus=newdoc.getElementsByClassName("h5p-overlay h5p-ie-transparent-background"); // 包装当前题目的元素
-                if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
-                    console.group(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
-                        .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
-                        .action.params.question.task.dropZones[1].correctElements}`);
-                    console.log(`正在自动填入中……`);
-                    DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
-                    if (Interations[QuestionOrders[i].order].action.params.question.task.elements[0].type.metadata.contentType === "Image") {
+                switch (Interations[QuestionOrders[i].order].action.params.question.task.elements[0].type.metadata.contentType){
+                    case "Image":
                         ContenttoPut=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-image"); // querySelector静态拷贝
                         console.log(`图片分类题目`);
-                    } else {
+                        break;
+                    case "Text":
                         ContenttoPut=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-advanced-text"); // querySelector静态拷贝
                         console.log(`文字分类题目`);
+                        break;
+                }
+                DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
+                if (Interations[QuestionOrders[i].order].action.params.question.task.dropZones[0].single == false) {
+                    DropZonesNum=Interations[QuestionOrders[i].order].action.params.question.task.dropZones.length;
+                    console.group(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)：`);
+                    for(j=0;j<DropZonesNum;j++) {
+                        console.log(`${j}: ${Interations[QuestionOrders[i].order]
+                            .action.params.question.task.dropZones[j].correctElements}`);
                     }
+                    console.log(`正在自动填入中……`);
                     for(j=0;j<ContenttoPut.length;j++) {
-                        if (Interations[QuestionOrders[i].order]
-                            .action.params.question.task.dropZones[0].correctElements.includes(j.toString()))
-                        {
-                            DropZones[0].appendChild(ContenttoPut[j]);
-
-                        }else{
-                            DropZones[1].appendChild(ContenttoPut[j]);
+                        for(k=0;k<DropZonesNum;k++) {
+                            result=Interations[QuestionOrders[i].order].action.params.question.task.dropZones[k].correctElements.includes(j.toString());
+                            if (result) {
+                                DropZones[k].appendChild(ContenttoPut[j]); // 将图片放入dropzone
+                                ContenttoPut[j].click();
+                                console.log(`第${j+1}个选项已自动填入`);
+                                await sleep(1000);
+                                break;
+                            }
                         }
-                        ContenttoPut[j].click();
-                        console.log(`第${j+1}个选项已自动填入`);
-                        await sleep(1000);
                     }
                     nowFocus[0].getElementsByClassName("h5p-question-check-answer h5p-joubelui-button")[0].click(); // 选完记得点击Check！
                     console.log(`第${i+1}个互动已自动选择`);
                     await sleep(5000);
-                    console.groupEnd(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)\n0：${Interations[QuestionOrders[i].order]
-                        .action.params.question.task.dropZones[0].correctElements}\n1：${Interations[QuestionOrders[i].order]
-                        .action.params.question.task.dropZones[1].correctElements}`);
+                    console.groupEnd(`第${i+1}个互动是拖拉题-分类，答案是\n(从0开始的索引，内容序号从左到右，分类栏从左到右)：`);
                     await sleep(500);
                 }else{
                     console.group(`第${i+1}个互动是拖拉题-一项一框，将画面向右视为x轴正方向，向下视为y轴正方向，左上角为原点，坐标为\n`);
@@ -275,22 +278,18 @@ async function AutoAnswer() {
                             .action.params.question.task.dropZones[j].y}`);
                     }
                     console.log(`正在自动填入中……`);
-                    DropZones=nowFocus[0].getElementsByClassName("h5p-dropzone"); // 当前题目的dropzones
-                    imgs=newdoc.querySelectorAll(".h5p-draggable.ui-draggable.ui-draggable-handle.h5p-advanced-text"); // querySelector静态拷贝
-                    DropZonesStyles=[];
-                    for(j=0;j<DropZones.length;j++) {
-                        DropZonesStyles.push(StyletoDict(DropZones[j].getAttribute("style")));
-                    }
-                    for (j=0;j<DropZones.length;j++) {
-                        for(k=0;k<imgs.length;k++) {
+                    skip=[]; // 用于记录已经填入的选项
+                    for (j=0;j<ContenttoPut.length;j++) {
+                        for(k=0;k<DropZones.length;k++) {
                             result=decodeHtml(Interations[QuestionOrders[i].order].action.params.question.task
                                 .elements[parseFloat(Interations[QuestionOrders[i].order]
-                                .action.params.question.task.dropZones[j].correctElements[0])]
-                                .type.params.text.replace(/<(\/)?\w+>|\n/g, ''))===imgs[k].children[1].innerText;
-                            if (result) {
-                                DropZones[j].appendChild(imgs[k]); // 将图片放入dropzone
-                                DropZones[j].lastChild.click();
+                                .action.params.question.task.dropZones[k].correctElements[0])]
+                                .type.params.text.replace(/<(\/)?\w+>|\n/g, ''))===ContenttoPut[j].children[1].innerText;
+                            if (result&&!skip.includes(k)) {
+                                DropZones[k].appendChild(ContenttoPut[j]); // 将图片放入dropzone
+                                DropZones[k].lastChild.click();
                                 console.log(`第${j+1}个选项已自动填入`);
+                                skip.push(k);
                                 await sleep(1000);
                                 break;
                             }

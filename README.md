@@ -1,5 +1,7 @@
 # QMULAutoFindAnswer
 ## 适用于QMUL的Interactive Video
+## 也能用于H5P互动视频
+稍作修改就能用到别的h5p视频
 ## 使用方法：
 1. 打开QMULAutoAnswer.js
 2. 打开视频页面，等待视频一会，然后根据你选的方法不同：
