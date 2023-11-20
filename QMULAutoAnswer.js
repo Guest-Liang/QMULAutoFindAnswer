@@ -304,9 +304,9 @@ async function AutoAnswer() {
                 break;
             case libraryTitle_types[4]: // done
                 // console.log("Single Choice Set");
+                ActualLength=0;
                 for(j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) { // 去除空白题目导致的识别错误
-                    ActualLength=0;
-                    if(Interations[QuestionOrders[i].order].action.params.choices[j].question==null) {
+                    if(Interations[QuestionOrders[i].order].action.params.choices[j].question!==null) {
                         ActualLength=ActualLength+1;
                     }
                 }
