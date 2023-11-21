@@ -28,8 +28,6 @@
 10.2 | 10.4   
 
 
-
-
 ## 测试代码
 ```js
 function fireKeyEvent(element, evtType, keyChar) {
@@ -47,3 +45,35 @@ objInput.addEventListener('keydown', function (e) {
 fireKeyEvent(objInput,"keydown","a");
 ```
 
+
+```js
+setTimeout(function () {
+      var tmp = $('<div>', {
+        'text': $input.val()
+      });
+      tmp.css({
+        'position': 'absolute',
+        'white-space': 'nowrap',
+        'font-size': $input.css('font-size'),
+        'font-family': $input.css('font-family'),
+        'padding': $input.css('padding'),
+        'width': 'initial'
+      });
+      $input.parent().append(tmp);
+      var width = tmp.width();
+      var parentWidth = self.$questions.width();
+      tmp.remove();
+      if (width <= minPx) {
+        // Apply min width
+        $input.width(minPx + static_min_pad);
+      }
+      else if (width + rightPadPx >= parentWidth) {
+        // Apply max width of parent
+        $input.width(parentWidth - rightPadPx);
+      }
+      else {
+        // Apply width that wraps input
+        $input.width(width + static_min_pad);
+      }
+    }, 1);
+```

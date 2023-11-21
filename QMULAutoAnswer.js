@@ -206,20 +206,24 @@ async function AutoAnswer() {
                         ans[j] = ans[j].split("/"); // 如果有/，拆开
                     }
                 }
+                var ChangeEvents=new Event('change'); // 创建change事件
                 for (j=0;j<inputs.length;j++) {
+                    inputs[j].focus();
                     if (typeof(ans[j])=="object") {
                         r=parseInt(Math.random()*ans[j].length); // 随机选择一个
                         for (k=0;k<ans[j][r].length;k++) {
                             inputs[j].value=inputs[j].value+ans[j][r][k];
-                            await sleep(300);
+                            await sleep(100);
                         }
                     } 
                     else {
                         for (k=0;k<ans[j].length;k++) {
                             inputs[j].value=inputs[j].value+ans[j][k];
-                            await sleep(300);
+                            await sleep(100);
                         }
                     }
+                    inputs[j].dispatchEvent(ChangeEvents); // 触发change事件
+                    inputs[j].blur();
                     console.log(`第${j+1}个空已自动填入`);
                     await sleep(1000);
                 }
