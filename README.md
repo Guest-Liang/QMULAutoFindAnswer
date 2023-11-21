@@ -1,7 +1,9 @@
 # QMULAutoFindAnswer
 ## 适用于QMUL的Interactive Video
-## 也能用于H5P互动视频
-稍作修改就能用到别的h5p视频
+Wakatime in this repo：
+[![wakatime](https://wakatime.com/badge/user/0985cb7f-21b8-4ea5-86a4-5e6ba93cb575/project/018b899c-da5f-44c4-a2f2-9ff240d2d98b.svg)](https://wakatime.com/badge/user/0985cb7f-21b8-4ea5-86a4-5e6ba93cb575/project/018b899c-da5f-44c4-a2f2-9ff240d2d98b)
+## 可用于H5P互动视频
+稍作修改即可
 ## 使用方法：
 1. 打开QMULAutoAnswer.js
 2. 打开视频页面，等待视频一会，然后根据你选的方法不同：
@@ -19,3 +21,5 @@ Q: 答案在哪？
 A: 不会用别用
 ## 注意事项：
 有问题提issue，~~看到了会解决~~   
+## 声明
+本项目仅供交流学习使用   
