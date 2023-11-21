@@ -306,7 +306,7 @@ async function AutoAnswer() {
                 // console.log("Single Choice Set");
                 ActualLength=0;
                 for(j=0;j<Interations[QuestionOrders[i].order].action.params.choices.length;j++) { // 去除空白题目导致的识别错误
-                    if(Interations[QuestionOrders[i].order].action.params.choices[j].question!==null) {
+                    if(typeof(Interations[QuestionOrders[i].order].action.params.choices[j].question)!="undefined") {
                         ActualLength=ActualLength+1;
                     }
                 }
